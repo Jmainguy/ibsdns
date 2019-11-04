@@ -1,9 +1,9 @@
 package main
 
 import (
+	"flag"
 	"fmt"
-    "os"
-    "flag"
+	"os"
 )
 
 func check(e error) {
@@ -14,17 +14,17 @@ func check(e error) {
 
 func main() {
 
-    value := flag.String("value", "", "IP to update domain to, example 192.168.1.1")
-    flag.Parse()
+	value := flag.String("value", "", "IP to update domain to, example 192.168.1.1")
+	flag.Parse()
 
 	c := config()
 	recordtype := "A"
 	newvalue := *value
 
-    if newvalue == "" {
-        fmt.Println("You must provide a value for the IP")
-        os.Exit(1)
-    }
+	if newvalue == "" {
+		fmt.Println("You must provide a value for the IP")
+		os.Exit(1)
+	}
 
 	tid, status, message := updateDns(c.ApiKey, c.Password, c.Domain, recordtype, newvalue)
 	if message != "" {

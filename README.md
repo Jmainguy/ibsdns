@@ -18,3 +18,10 @@ On server at home (or where the IP will be dynamicly changing) you need to add `
 On remotehost add ibsdns binary to `/usr/sbin/ibsdns` and edit `/opt/ibsdns/config.yaml` for your values.
 
 Ensure passwordless ssh is setup from home to remote host, and that the user can read /opt/ibsdns/config.yaml
+
+## Build
+```/bin/bash
+export GO111MODULE=on
+go mod init
+go build
+```
