@@ -12,10 +12,10 @@ and a static host to ssh to and run the update tool from (internetBS limits thei
 On server at home (or where the IP will be dynamicly changing) you need to add `grabDynamicIp.sh` to a cronjob, like once every 5 minutes perhaps
 
 ```/bin/bash
-*/5 * * * * /home/jmainguy/grabDynamicIp.sh jmainguy@remotehost.com > /home/jmainguy/dnsLog.txt 2>&1
+*/5 * * * * /home/kmosdell/dynamicDNS/grabDynamicIp.sh remoteHost.example.com >> /home/exampleUser/dynamicDNS/dnsLog.txt 2>&1
 ```
 
-On remotehost add ibsdns binary to `/usr/sbin/ibsdns` and edit `/opt/ibsdns/config.yaml` for your values.
+On remotehost add ibsdns binary to `/usr/local/bin/ibsdns` and edit `/opt/ibsdns/config.yaml` for your values.
 
 Ensure passwordless ssh is setup from home to remote host, and that the user can read /opt/ibsdns/config.yaml
 

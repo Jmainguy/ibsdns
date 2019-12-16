@@ -7,10 +7,11 @@ if [[ $CONNECTION == "" ]]; then
     exit 1
 fi
 NEWIP=$(curl -s https://ip.jmainguy.com | awk '{print $4}')
-OLDIP=$(cat ~/lastIP.txt)
+OLDIP=$(cat /home/exampleUser/dynamicDNS/lastIP.txt)
 if [[ $NEWIP != $OLDIP ]]; then
-    echo $NEWIP > ~/lastIP.txt
-    ssh $CONNECTION "/usr/sbin/ibsdns --value \"$NEWIP\""
+    echo $NEWIP > /home/exampleUser/dynamicDNS/lastIP.txt
+    ssh $CONNECTION "/usr/local/bin/ibsdns --value \"$NEWIP\""
 else
     echo "No update needed"
 fi
+
